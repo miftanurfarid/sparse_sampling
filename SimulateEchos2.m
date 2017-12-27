@@ -28,7 +28,7 @@
 % same location as the original impulse in datafx,yg
 %%%%%%%%%%%%
 
-function [data, cdata]=SimulateEchos(Rfs, Tx, Rx, s, fs)
+function [data, cdata]=SimulateEchos2(Rfs, Tx, Rx, s, fs)
     c = 343; %speed of sound, assumed constant
     nTx = length(Tx); nRx = length(Rx); nRfs = length(Rfs);
 

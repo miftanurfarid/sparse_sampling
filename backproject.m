@@ -43,9 +43,9 @@ fprintf('Resampling Data . . .');
 
 for tx = 1:nTx
     for rx = 1:nRx
-        len = length(cdata{tx,rxg});
+        len = length(cdata{tx,rx});
         cdata{tx,rx} = ...
-            interpl(1:len,cdata{tx,rx},linspace(1,len,fix(len*R)));
+            interp1(1:len,cdata{tx,rx},linspace(1,len,fix(len*R)));
       end
 end
 fprintf(' Complete.\n');
@@ -81,8 +81,8 @@ for x=1:N
                 n = fix(R*d/c*fs);
                 %determine the index for the ...distance using the resampling factor
                 %add to the pixel the value from the range profile
-                if (n <= length(cdataftx,rxg)) image(x,y) =...
-                    image(x,y) + cdataftx,rxg(n); end
+                if (n <= length(cdata{tx,rx})) image(x,y) =...
+                    image(x,y) + cdata{tx,rx}(n); end
             end
         end
     end

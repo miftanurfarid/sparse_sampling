@@ -1,19 +1,23 @@
 %%Written by Taylor Williams
 %
-%A function that constructs an A matrix and a y vector from two separate%data sets. Input parameters specify exactly how to do this.
+%A function that constructs an A matrix and a y vector from two separate
+%data sets. Input parameters specify exactly how to do this.
 
 %%Input Parameters
-% Let T = number of transmitters in full data set
-% R = number of receivers in full data set
+%   Let T = number of transmitters in full data set
+%       R = number of receivers in full data set
 %
-% adata: a TxR cell array containing range profiles from a centered...point
-% reflector. Data used to construct the a matrix
+%   adata: a TxR cell array containing range profiles from a centered point
+%          reflector. Data used to construct the a matrix
 %
 % ydata: a TxR cell array containing range profiles from the unknown
 % scene. used to construct the y measurement vector.
 %
-% dataparams.G ? number of data sets to use (must be <= T*R)
-% dataparams.g ? a 2xG matrix where g(:,i) contains [tx rx]' where...tx isnumber
+% dataparams.G - number of data sets to use (must be <= T*R)
+% dataparams.g - a 2xG matrix where g(:,i) contains [tx rx]' where tx is
+% the transmitter number (from 1 to T) and rx is the receiver ...
+number
+ number
 % (from 1 to R). This matrix describes exactly what data to use.
 % dataparams.gpos ? a 2xG matrix where gpos(:,i)
 % contains [ptx prx]' where ptx and prx are complex numbers ...with the
@@ -46,7 +50,7 @@
 % scene.
 %
 
-function [A y] makecsparameters(adata, ydata, dataparams)
+function [A y] = makecsparameters(adata, ydata, dataparams)
 fs = 96000;
 c = 343;
 
