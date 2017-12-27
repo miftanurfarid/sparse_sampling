@@ -1,4 +1,4 @@
- %%Written by Taylor Williams (Last Edited: 3/23/2011)
+%%Written by Taylor Williams (Last Edited: 3/23/2011)
 %
 % Code to Simulate ideal data from a provided geometry of transmiters,
 % receivers and reflectors.
