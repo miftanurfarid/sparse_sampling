@@ -30,7 +30,7 @@ dataparams.G = length(Tx1)*length(Rx1); % number of data sets to use (must be <=
 counter = 1;
 for idx = 1:length(Tx1)
     for idy = 1:length(Rx1)
-        dataparams.g(:,counter) = [idx idy]';
+        dataparams.g(counter,:) = [idx idy];
         counter = counter + 1;
     end
 end
@@ -38,23 +38,25 @@ end
 counter = 1;
 for idx = 1:length(Tx1)
     for idy = 1:length(Rx1)
-        dataparams.gpos(:,counter) = [Tx1(idx) Rx1(idy)];
+        dataparams.gpos(counter,:) = [Tx1(idx) Rx1(idy)];
         counter = counter + 1;
     end
 end
 
 dataparams.nmax = 600;
 dataparams.TM = randn(600,600);
-% dataparams.keepsamples = 150*ones(1,dataparams.G);
 
 [adata.data acdata.data] = SimulateEchos(Rfs2, Tx2, Rx2, s, fs);
 [ydata.data ycdata.data] = SimulateEchos(Rfs1, Tx1, Rx1, s, fs);
 
+counter = 1;
 for idx = 1:length(Tx1)
     for idy = 1:length(Rx1)
-        y = FormEffectiveMeasurement(acdata.data{idx,idy}, dataparams.TM, keepsamples);
+        dataparams.keepsamples{counter} = FormEffectiveMeasurement2(ycdata.data{idx,idy}, 150);
+        counter = counter + 1;
     end
 end
 
-% [A, y] = MakeCSParameters(acdata, ycdata, dataparams, imageparams);
+[A, y] = MakeCSParameters(acdata, ycdata, dataparams, imageparams);
+% [x,r,g,info] = spg_bpdn(A,b);
 % image = FormatCSImage(x,N);

@@ -73,11 +73,11 @@ nEff = length(dataparams.keepsamples{1});
 for k = 1:dataparams.G
     Adata{k} = adata.data{dataparams.g(k,1),dataparams.g(k,2)};
     if (length(Adata{k}) < dataparams.nmax)
-        Adata{k} = [Adata{k} zeros(1,length(dataparams.nmax-Adata{k}))];
+        Adata{k} = [Adata{k} zeros(1,dataparams.nmax-length(Adata{k}))];
     end
     Ydata{k} = ydata.data{dataparams.g(k,1),dataparams.g(k,2)};
     if (length(Ydata{k}) < dataparams.nmax)
-        Ydata{k} = [Ydata{k} zeros(1,length(dataparams.nmax-Ydata{k}))];
+        Ydata{k} = [Ydata{k} zeros(1,dataparams.nmax-length(Ydata{k}))];
     end
 end
 
@@ -89,8 +89,8 @@ pixpos = (linspace(-L/2,L/2,N)'*ones(1,N))' + ...
 
 centerDistance = abs(gpos(:,1)) + abs(gpos(:,2));
 for g = 1:G
-    xydelay{g} = fs/c*((abs(gpos(g,1)-pixpos)+abs(pixpos-gpos(g,2)))-centerDistance(g))
-    pixvec = xydelayfgg(:,1);
+    xydelay{g} = fs/c*((abs(gpos(g,1)-pixpos)+abs(pixpos-gpos(g,2)))-centerDistance(g));
+    pixvec = xydelay{g}(:,1);
     for n = 2:N
         pixvec = [pixvec; xydelay{g}(:,n)];
     end
@@ -111,6 +111,7 @@ indexes = (nEff*(0:G))+1;
 df = 1/(nmax*1/fs);
 f = df*(1:nmax);
 
+fprintf('total %d pixels\n',N^2);
 for pixel=1:N^2
     if (mod(pixel,fix(N^2/100))==0)
         fprintf('%d ',pixel);
@@ -122,7 +123,7 @@ for pixel=1:N^2
         FreqD = e.*FreqData{g};
         %sample based on input parameters from user
         datapoints = T*real(ifft(FreqD))';
-        datapoints = datapoints(round(keepsamples{g}));
+        datapoints = datapoints(1:length(round(keepsamples{g})));
         %normalize measurement
         datapoints = datapoints./max(datapoints);
         %place into the empty A matrix
@@ -134,7 +135,7 @@ end
 indexes = (nEff*(0:dataparams.G))+1;
 for g=1:dataparams.G
     datapoints = (dataparams.TM*Ydata{g}(1:dataparams.nmax)');
-    datapoints = datapoints(round(dataparams.keepsamples{g}));
+    datapoints = datapoints(1:length(round(dataparams.keepsamples{g})));
     datapoints = datapoints./max(datapoints);
     y(indexes(g):(indexes(g+1)-1),1) = datapoints;
 end
