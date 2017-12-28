@@ -52,7 +52,7 @@
 %     scene
 %
 
-function [A, y] = MakeCSParameters(adata, ydata, dataparams)
+function [A, y] = MakeCSParameters(adata, ydata, dataparams, imageparams)
 fs = 96000;
 c = 343;
 
@@ -89,7 +89,7 @@ pixpos = (linspace(-L/2,L/2,N)'*ones(1,N))' + ...
 
 centerDistance = abs(gpos(:,1)) + abs(gpos(:,2));
 for g = 1:G
-    xydelay{g} = fs/c*((abs(gpos(g,1)-pixpos)+abs(pixpos-gpos(g,2)))-centerDistance(g)
+    xydelay{g} = fs/c*((abs(gpos(g,1)-pixpos)+abs(pixpos-gpos(g,2)))-centerDistance(g))
     pixvec = xydelayfgg(:,1);
     for n = 2:N
         pixvec = [pixvec; xydelay{g}(:,n)];

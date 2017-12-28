@@ -1,8 +1,7 @@
 %Jason T. Parker
 
-function ...
-showduadimensi(data,bounds,f_hand,title_string,cscale,x_string,y_string)
-%This function plots a normalized image from 2d data produced by ...pcmf image
+function Show2DImage(data,bounds,f_hand,title_string,cscale,x_string,y_string)
+%This function plots a normalized image from 2d data produced by pcmf image
 
 %data is a 2d matrix of raw (i.e. complex) pixel values
 
