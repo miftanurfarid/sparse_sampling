@@ -73,7 +73,7 @@ b = [51.0;
 -50.0;
 0.1];
 
-Tx = complex(a,b)/100; % dibagi 100 untuk jadi meter
+Tx2 = complex(a,b)/100; % dibagi 100 untuk jadi meter
 
 % receiver location
 a = [-51.5;
@@ -110,15 +110,15 @@ b = [-10.7;
 39.8;
 17.5];
 
-Rx = complex(a,b)/100;
+Rx2 = complex(a,b)/100;
 
 % reflector location
-a = [4.0;
--20.0;
--8.0];
+a = [0];
 
-b = [-3.0;
--10.0;
-17.0];
+b = [0];
 
-Rfs = complex(a,b)/100;
+Rfs2 = complex(a,b)/100;
+
+%% init freq sampling
+fs = 96000;
+clear a b
