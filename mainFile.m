@@ -58,5 +58,5 @@ for idx = 1:length(Tx1)
 end
 
 [A, y] = MakeCSParameters(acdata, ycdata, dataparams, imageparams);
-% [x,r,g,info] = spg_bpdn(A,b);
+[x,r,g,info] = spg_bpdn(A,y);
 % image = FormatCSImage(x,N);
