@@ -9,7 +9,7 @@
  % original PN sequence of length 2�16?1 as seen in ...MakePNWaveform.m
 %%%%%%%%%%%%
 
-function s = GenerateS ()
+function s = GenerateS (fs)
 
  %Motivation: We want to create a signal that is bandlimited to ...roughly
 %[2.5kHz, 30kHz] since the chosen speakers have low gains below ...2.4kHz and
@@ -17,7 +17,7 @@ function s = GenerateS ()
  %waveform using an upsampling factor of 1 and use a bandpass ...filter design
 
 %generate ideal PN Code for transmission
-fs = 8000; %sample rate
+% fs = 8000; %sample rate
 [s, seq, sequence, Ns] = makepnwaveform(1,8,0,fs);
 
 L = 160;

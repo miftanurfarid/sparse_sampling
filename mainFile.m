@@ -1,8 +1,8 @@
 clear all; close all; clc;
 
 addpath(genpath(pwd));
-
-s = GenerateS; % generate waveform s
+fs = 96000;
+s = GenerateS(fs); % generate waveform s
 positions; % generate position of transmitter, receiver and reflector
 
 [data, cdata] = SimulateEchos(Rfs1, Tx1, Rx1, s, fs);
