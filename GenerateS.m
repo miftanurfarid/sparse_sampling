@@ -17,8 +17,8 @@ function s = GenerateS ()
  %waveform using an upsampling factor of 1 and use a bandpass ...filter design
 
 %generate ideal PN Code for transmission
-[s, seq, sequence, Ns] = makepnwaveform(1,16,0,96000);
-fs = 96000; %sample rate
+fs = 8000; %sample rate
+[s, seq, sequence, Ns] = makepnwaveform(1,8,0,fs);
 
 L = 160;
 fsa = 0.025;

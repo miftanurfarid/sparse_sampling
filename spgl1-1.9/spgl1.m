@@ -166,7 +166,7 @@ end
 defaultopts = spgSetParms(...
 'fid'        ,      1 , ... % File ID for output
 'verbosity'  ,      2 , ... % Verbosity level
-'iterations' ,    2^8 , ... % Max number of iterations
+'iterations' ,     2^8 , ... % Max number of iterations
 'nPrevVals'  ,      3 , ... % Number previous func values for linesearch
 'bpTol'      ,  1e-06 , ... % Tolerance for basis pursuit solution 
 'lsTol'      ,  1e-06 , ... % Least-squares optimality tolerance

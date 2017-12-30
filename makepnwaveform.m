@@ -5,14 +5,14 @@
 %
 %%Input Parameters:
 % T: total time for the entire symbol sequence to occur
-% N: Symbol sequence will be of length 2�(N) ? 1. Must be in the ...range
+% N: Symbol sequence will be of length 2^(N)-1. Must be in the range
 % [3, 18].
 % alpha: SRRC pulse shaping parameter. See SRRC.m
 % fs: sampling rate of signal
 %
 %%Output Parameters:
 % s: final waveform at fs sampling rate. Padded with zeros so that...the
-% signal has a length of a power of two for FFT speed?up.
+% signal has a length of a power of two for FFT speed-up.
 %
 % seq: upsampled version of the PN code by U. Can be used to plot...s vs.
 % seq and see exactly where the symbols match up.
