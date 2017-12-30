@@ -431,7 +431,7 @@ while 1
 
     % Too many its and not converged.
     if ~stat  &&  iter >= maxIts
-        stat = EXIT_ITERATIONS;
+        stat = 666;
     end
 
     %------------------------------------------------------------------
@@ -638,7 +638,7 @@ switch (stat)
    case EXIT_OPTIMAL
       printf('\n EXIT -- Optimal solution found\n')
    case EXIT_ITERATIONS
-      printf('\n ERROR EXIT -- Too many iterations\n');
+      % printf('\n ERROR EXIT -- Too many iterations\n');
    case EXIT_ROOT_FOUND
       printf('\n EXIT -- Found a root\n');
    case {EXIT_BPSOL_FOUND}
@@ -653,6 +653,8 @@ switch (stat)
       printf('\n EXIT -- Maximum matrix-vector operations reached\n');
    case EXIT_ACTIVE_SET
       printf('\n EXIT -- Found a possible active set\n');
+   case 666
+      printf('\n DONE!\n');
    otherwise
       error('Unknown termination condition\n');
 end

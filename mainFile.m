@@ -1,6 +1,6 @@
-% clear all; close all; clc;
+clear all; close all; clc;
 
-% addpath(genpath(pwd));
+addpath(genpath(pwd));
 
 s = GenerateS; % generate waveform s
 positions; % generate position of transmitter, receiver and reflector
@@ -17,7 +17,7 @@ imageparams.N = 100; % 199px x 199px
 % image parameters
 bounds = [-0.35,0.35,-0.35,0.35,-0.35,0.35]; % [minX,maxX,minY,maxY,minZ,maxZ]
 title_string = 'Hasil Backprojection';
-cscale = [-20 1]; % min -10 dB max 1 dB
+cscale = [-10 1]; % min -10 dB max 1 dB
 x_string = 'X (m)';
 y_string = 'Y (m)';
 f_hand = 1; % number figure
@@ -61,16 +61,15 @@ for idx = 1:length(Tx1)
 end
 
 [A, y] = MakeCSParameters(acdata, ycdata, dataparams, imageparams);
-opts = spgSetParms('optTol',1e-4);                                           
-[x,r,g,info] = spgl1(A, y, 0, 1e-3, [], opts);
-% image2 = FormatCSImage(x,sqrt(x));
+opts = spgSetParms('optTol',1e-4);                                         
+[x,r,g,info] = spgl1(A, y, 0, 1e-3, [], opts); % sigma = 1000;
 bounds = [-0.35,0.35,-0.35,0.35,-0.35,0.35]; % [minX,maxX,minY,maxY,minZ,maxZ]
 title_string = 'Hasil Sparse-sampling';
-cscale = [-20 1]; % min -10 dB max 1 dB
+cscale = [-10 1]; % min -10 dB max 1 dB
 x_string = 'X (m)';
 y_string = 'Y (m)';
 f_hand = 2; % number figure
-
+image2 = FormatCSImage(x,sqrt(length(x)));
 % result backprojection
 figure(2);
 Show2DImage(image2,bounds,f_hand,title_string,cscale,x_string,y_string);
