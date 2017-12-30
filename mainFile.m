@@ -70,6 +70,6 @@ x_string = 'X (m)';
 y_string = 'Y (m)';
 f_hand = 2; % number figure
 image2 = FormatCSImage(x,sqrt(length(x)));
-% result backprojection
+% result sparse sampling
 figure(2);
 Show2DImage(image2,bounds,f_hand,title_string,cscale,x_string,y_string);
